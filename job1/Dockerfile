@@ -1,3 +1,10 @@
+RUN systemctl start firewalld
+RUN firewall-cmd --zone=public --add-masquerade --permanent
+RUN firewall-cmd --zone=public --add-port=80/tcp
+RUN firewall-cmd --zone=public --add-port=443/tcp
+RUN firewall-cmd=443/tcp
+RUN setenforce 0
+RUN systemctl stop firewalld
 FROM centos
 
 RUN yum install httpd -y
